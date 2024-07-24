@@ -1,14 +1,11 @@
 import java.util.*;
 
-public class BFSTraversal {
-
-    static class Edge
-     {
+public class AllPathsFromSrcToDest {
+    static class Edge {
         int src;
         int dest;
 
-        public Edge(int s, int d) 
-        {
+        public Edge(int s, int d) {
             this.src = s;
             this.dest = d;
         }
@@ -48,7 +45,7 @@ public class BFSTraversal {
         while (!q.isEmpty()) {
             int curr = q.remove();
             if (vis[curr] == false) {
-                System.out.println(curr + " ");
+                System.out.print(curr + " ");
                 vis[curr] = true;
 
                 for (int i = 0; i < graph[curr].size(); i++) {
@@ -59,13 +56,29 @@ public class BFSTraversal {
         }
     }
 
+    public static void dfs(ArrayList<Edge> graph[], int curr, boolean vis[]) {
+        System.out.print(curr + " ");
+        vis[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            if (vis[e.dest] == false)
+                dfs(graph, e.dest, vis);
+        }
+    }
+
     public static void main(String[] args) {
         int V = 6;
 
         ArrayList<Edge> graph[] = new ArrayList[V];
         creategraph(graph);
-
+        boolean vis[] = new boolean[V];
+        System.out.println("DFS Taversal");
+        dfs(graph, 0, vis);
+        System.out.println();
+        System.out.println();
+        System.out.println("BFS Taversal");
         bfs(graph, V);
-        System.out.println("Hello World");
     }
+
 }

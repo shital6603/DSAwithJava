@@ -6,7 +6,7 @@ public class DFSTraversal {
     static class Edge {
         int src;
         int dest;
-        
+
         public Edge(int s, int d) {
             this.src = s;
             this.dest = d;
@@ -44,12 +44,12 @@ public class DFSTraversal {
     }
 
     public static void dfs(ArrayList<Edge> graph[], int curr, boolean vis[]) {
-        System.out.println(curr+" ");
+        System.out.println(curr + " ");
         vis[curr] = true;
 
         for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
-            if(vis[e.dest]==false)
+            if (vis[e.dest] == false)
                 dfs(graph, e.dest, vis);
         }
     }
@@ -62,6 +62,5 @@ public class DFSTraversal {
 
         boolean vis[] = new boolean[V];
         dfs(graph, 0, vis);
-        System.out.println("Hello World");
     }
 }
