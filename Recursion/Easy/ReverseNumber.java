@@ -13,7 +13,7 @@ public class ReverseNumber {
         int rem=num%10;
         sum=sum*10+rem;
         reverse(num/10);
-        
 
-    }  
+    }
+    
 }
